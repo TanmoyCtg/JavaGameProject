@@ -110,16 +110,15 @@ public class Game extends Canvas{
         firePressed = false;
     }
     private void initEntities(){
-        // create the player ship and place it
-        // in the center of the screen
-        ship = new ShipEntity();
+        // create the player ship and place it in the center of the screen
+       // ship = new ShipEntity();
         entities.add(ship);
         // create a block of aliens(5 rows,by 12 aliens, spaced evenly)
         alienCount =  0;
         for (int row=0;row<5;row++ ){
             for(int x = 0;x<12;x++){
-                Entity alien = new AlienEntity();
-                entities.add(alien);
+                //Entity alien = new AlienEntity();
+                //entities.add(alien);
                 alienCount++;
             }
         }
