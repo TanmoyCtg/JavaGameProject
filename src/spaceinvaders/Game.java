@@ -109,6 +109,86 @@ public class Game extends Canvas{
         rightPressed = false;
         firePressed = false;
     }
+    private void initEntities(){
+        // create the player ship and place it
+        // in the center of the screen
+        ship = new ShipEntity();
+        entities.add(ship);
+        // create a block of aliens(5 rows,by 12 aliens, spaced evenly)
+        alienCount =  0;
+        for (int row=0;row<5;row++ ){
+            for(int x = 0;x<12;x++){
+                Entity alien = new AlienEntity();
+                entities.add(alien);
+                alienCount++;
+            }
+        }
+
+    }
+//
+    public void updateLogic(){
+      logicRequiredThisLoop=true;
+    }
+    // Remove an entity from the game.
+    public void removeEntity(Entity entity){
+        removeList.add(entity);
+    }
+    /*
+    * KeyInputHandler class is a private class. We create this class to handle the keyboard input.
+    * left, right,shoot when game is on.
+    * start button can be anything
+    * This class is inner class of Game class
+    * */
+    private class KeyInputHandler extends KeyAdapter{
+        private int pressCount = 1;
+        /*
+        * KeyTyped() comes in
+        * */
+        public void KeyPressed(KeyEvent e){
+            if (waitingForKeyPress){
+                return;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_LEFT){
+                leftPressed = true;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_RIGHT){
+                rightPressed = true;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_SPACE){
+                firePressed = true;
+            }
+        }
+
+        public void keyReleased(KeyEvent e){
+            if(waitingForKeyPress){return;}
+            if (e.getKeyCode() == KeyEvent.VK_LEFT){
+                leftPressed = false;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_RIGHT){
+                rightPressed = false;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_SPACE){
+                firePressed = false;
+            }
+        }
+        public void keyTyped(KeyEvent e){
+            // if we're waiting for a "any key" type then
+
+            if (waitingForKeyPress){
+                if (pressCount == 1){
+                    waitingForKeyPress = false;
+                    startGame();
+                    pressCount = 0;
+                }
+                else {
+                    pressCount++;
+                }
+            }
+            if(e.getKeyChar() == 27){
+                System.exit(0);
+            }
+        }
+    }
 
     public static void main(String argv[]) {
         Game g =new Game();

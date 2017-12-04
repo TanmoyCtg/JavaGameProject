@@ -1,6 +1,6 @@
 package spaceinvaders;
 
-import java.awt.Rectangle;
+import java.awt.*;
 
 public abstract class Entity {
     protected  double x;
@@ -24,9 +24,30 @@ public abstract class Entity {
     public void setHorizontalMovement(double dx){
         this.dx = dx;
     }
-
-
-
+    /*
+    * set the vertical speed of this entity
+    * The vertical speed of this entity (pixels/ sec
+    * */
+    public void setVerticalMovement(double dy){
+        this.dy = dy;
+    }
+/*
+* Get the horizontal speed of this entity
+* return horizontal speed dx of this entity(pixels/sec)
+* */
+    public double getHorizontalMovement(){
+        return dx;
+    }
+    /*
+    * Get the vertical speed of this entity
+    * return dy vertical entity(pixels/sec)
+    * */
+    public double getVerticalMovement(){
+        return dy;
+    }
+    public void draw(Graphics g){
+        sprite.draw(g,(int) x,(int) y);
+    }
 
 
 
