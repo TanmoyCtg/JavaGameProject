@@ -143,6 +143,57 @@ public class Game extends Canvas{
         message = "Well done! You win!";
         waitingForKeyPress = true;
     }
+    // Notification that an alien has been killed
+    public void notifyAlienKilled(){
+        //reduce the alien count, if there are none left, player won
+        alienCount--;
+        if (alienCount == 0){
+            notifyWin();
+        }
+        // if there are aliens like little
+        //we increase aliens speed
+        for (int i=0; i<entities.size();i++){
+            Entity entity = (Entity) entities.get(i);
+            if (entity instanceof AlienEntity){
+                //speed up by 2%
+                entity.setHorizontalMovement(entity.getHorizontalMovement() * 1.02);
+            }
+        }
+    }
+    /**
+     * Attempt to fire a shot from the player. Its called "try"
+     * since we must first check that the player can fire at this
+     * point, i.e. has he/she waited long enough between shots
+     */
+    public void tryToFire(){
+        //check that we have waiting long enough to fire
+        if (System.currentTimeMillis() - lastFire < firingInterval){
+            return;
+        }
+        // if player waited long, creat the shot entity and record the time
+        lastFire = System.currentTimeMillis();
+        ShotEntity shot = new ShotEntity(this,"sprites/shot.gif",ship.getX()+10,ship.getY()=30);
+        entities.add(shot);
+    }
+    /**
+     * The main game loop. This loop is running during all game
+     * play as is responsible for the following activities:
+     * <p>
+     * - Working out the speed of the game loop to update moves
+     * - Moving the game entities
+     * - Drawing the screen contents (entities, text)
+     * - Updating game events
+     * - Checking Input
+     * <p>
+     */
+    public void gameLoop(){
+        long lastLoopTime =System.currentTimeMillis();
+        // keep looping round untill the game ends
+        while(gameRunning){
+
+        }
+    }
+
     /*
     * KeyInputHandler class is a private class. We create this class to handle the keyboard input.
     * left, right,shoot when game is on.
