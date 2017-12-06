@@ -93,7 +93,7 @@ public class Game extends Canvas{
         // initialise the entities in our game so there's something
         // to see at startup
         initEntities();
-    }
+    } // Game constructor end here
 
     /**
      * Start a fresh game, this should clear out any old data and
@@ -131,6 +131,17 @@ public class Game extends Canvas{
     // Remove an entity from the game.
     public void removeEntity(Entity entity){
         removeList.add(entity);
+    }
+
+    // notify the player died
+    public void notifyDeath(){
+        message = "Oh no! They got you, try again?";
+        waitingForKeyPress = true;
+    }
+    // Notification that the player has won since all the aliens
+    public void notifyWin(){
+        message = "Well done! You win!";
+        waitingForKeyPress = true;
     }
     /*
     * KeyInputHandler class is a private class. We create this class to handle the keyboard input.
