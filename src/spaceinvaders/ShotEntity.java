@@ -58,15 +58,3 @@ public class ShotEntity extends Entity {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-}
