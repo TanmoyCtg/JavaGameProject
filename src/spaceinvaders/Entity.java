@@ -48,16 +48,39 @@ public abstract class Entity {
     public void draw(Graphics g){
         sprite.draw(g,(int) x,(int) y);
     }
+/*
+* we Draw this entity to the graphics context provided
+* @param g is Graphics class object. g object draw the sprite
+* */
+   public void doLogic(){
 
+   }
+   /*
+   * Get the x location of this entity
+   * return x - int
+   * */
+   public int getX(){return (int) x;}
 
+   public int getY() {return (int) y;}
 
+    /**
+     * Check if this entity collised with another.
+     *
+     * @param other The other entity to check collision against
+     * @return True if the entities collide with each other
+     */
+    public boolean collidesWith(Entity other){
+        me.setBounds((int) x, (int) y, sprite.getWidth(),sprite.getHeight());
+        him.setBounds((int) other.x, (int) other.y,other.sprite.getWidth(),other.sprite.getHeight());
+        return me.intersects(him);
+    }
 
-
-
-
-
-
-
-
+/**
+ * Notification that this entity collided with another.
+ *
+ * @param other The entity with which this entity collided.
+ */
+// abstract methos
+    public abstract void collidedWith(Entity other);
 
 }
