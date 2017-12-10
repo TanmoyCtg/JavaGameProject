@@ -4,6 +4,7 @@ package spaceinvaders;
 public class ShipEntity extends Entity {
     // the game in which the ship exists
     private Game game;
+
     public ShipEntity(Game game,String ref,int x, int y){
         super (ref,x,y);
         this.game = game;
