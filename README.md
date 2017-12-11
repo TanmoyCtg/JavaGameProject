@@ -65,8 +65,26 @@ Inside KeyInputHandler class we use module:
   
 </ul>
 
+<h2> Public Game() constructor </h2>
+<strong>How we make Game constructor</strong>
+<article>
+  <p> 
+    we create frame to contain our game. How? Using JFrame. We import javax.swing.JFrame. Then we give a title our Frame. JFrame()
+    constructor takes our string frame title. We need to hold the content of the frame and we need resolution of the game. That's why
+    we need JPanel. JPanel provide that for us. We need to import javax.swing.JPanel we declared panel object and then set our frame         width and height. That's why we need to use <b>setPreferredSize(width, height)</b>. we make our setLayout(null).
+   
+    Next we setup our canvas size and put it into content of the frame.
+    we setBounds(x,y,width,height) 
+    add this to the panel. always use add() else nothing happened.
+    Now we need to make our window visible. That's why we need to use container object again
+    container.pack()
+    <b>what .pack() do</b>
+    <strong>Pack is calling setSize.Pack() function gives the charge of frame layout manager to set frame size.pack() pack the components closely together.</strong>
+    setVisible () - function takes a boolean argument.if it's true then window is visible.
+  
+  </p>
 
-
+</article>
 
 
 
